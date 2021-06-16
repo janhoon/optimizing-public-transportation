@@ -75,8 +75,6 @@ class Weather(Producer):
             }]
         })
 
-        logging.info(data)
-
         resp = requests.post(
             f"{Weather.rest_proxy_url}/topics/{self.topic_name}",
             headers={"Content-Type": "application/vnd.kafka.avro.v2+json"},
