@@ -55,10 +55,10 @@ Our partners at the CTA have asked that we also send weather readings into Kafka
 
 To accomplish this, you must complete the following tasks:
 
-1. [ ] Define a `value` schema for the weather event in `producers/models/schemas/weather_value.json` with the following attributes
+1. [x] Define a `value` schema for the weather event in `producers/models/schemas/weather_value.json` with the following attributes
 	* `temperature`
 	* `status`
-1. [ ] Complete the code in `producers/models/weather.py` so that:
+1. [x] Complete the code in `producers/models/weather.py` so that:
 	* A topic is created for weather events
 	* The weather model emits `weather` event to Kafka REST Proxy whenever the `Weather.run()` function is called.
 		* **NOTE**: When sending HTTP requests to Kafka REST Proxy, be careful to include the correct `Content-Type`. Pay close attention to the [examples in the documentation](https://docs.confluent.io/current/kafka-rest/api.html#post--topics-(string-topic_name)) for more information.
