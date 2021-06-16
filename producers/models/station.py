@@ -28,7 +28,7 @@ class Station(Producer):
                 .replace("'", "")
         )
 
-        topic_name = f"{station_name}_station"  # TODO: Come up with a better topic name
+        topic_name = f"station_arrival"
         super().__init__(
             topic_name,
             key_schema=self.key_schema,
@@ -55,7 +55,7 @@ class Station(Producer):
                 "station_id": self.station_id,
                 "train_id": train.train_id,
                 "direction": direction,
-                "line": None,  # TODO: find origin
+                "line": self.color.name,
                 "train_status": train.status.name,
                 "prev_station_id": prev_station_id,
                 "prev_direction": prev_direction

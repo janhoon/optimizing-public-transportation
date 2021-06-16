@@ -21,14 +21,14 @@ class Turnstile(Producer):
         """Create the Turnstile"""
         station_name = (
             station.name.lower()
-            .replace("/", "_and_")
-            .replace(" ", "_")
-            .replace("-", "_")
-            .replace("'", "")
+                .replace("/", "_and_")
+                .replace(" ", "_")
+                .replace("-", "_")
+                .replace("'", "")
         )
 
         super().__init__(
-            f"{station_name}_turnstile",  # TODO: Come up with a better topic name
+            f"station_turnstile",
             key_schema=Turnstile.key_schema,
             value_schema=Turnstile.value_schema,
             num_partitions=1,
@@ -41,13 +41,14 @@ class Turnstile(Producer):
         """Simulates riders entering through the turnstile."""
         num_entries = self.turnstile_hardware.get_entries(timestamp, time_step)
         logger.info("turnstile")
-
-        self.producer.produce(
-            topic=self.topic_name,
-            key={"timestamp": self.time_millis()},
-            value={
-                "station_id": self.station.station_id,
-                "train_id": None,  # TODO: get train
-                "line": None  # TODO: get line
-            }
-        )
+        for _ in range(num_entries):
+            if self.station.a_train is not None or self.station.b_train is not None:
+                self.producer.produce(
+                    topic=self.topic_name,
+                    key={"timestamp": int(timestamp.timestamp())},
+                    value={
+                        "station_id": self.station.station_id,
+                        "station_name": self.station.name,
+                        "line": self.station.color.name
+                    }
+                )
