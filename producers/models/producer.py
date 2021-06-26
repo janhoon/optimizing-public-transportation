@@ -3,7 +3,8 @@ import logging
 import time
 
 from confluent_kafka import avro
-from confluent_kafka.admin import AdminClient, NewTopic
+from confluent_kafka.admin import AdminClient
+from confluent_kafka.cimpl import NewTopic
 from confluent_kafka.avro import AvroProducer
 
 logger = logging.getLogger(__name__)

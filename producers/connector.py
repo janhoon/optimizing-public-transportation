@@ -7,7 +7,7 @@ import requests
 logger = logging.getLogger(__name__)
 
 KAFKA_CONNECT_URL = "http://localhost:8083/connectors"
-CONNECTOR_NAME = "stations"
+CONNECTOR_NAME = "org.chicago.cta.connect"
 
 
 def configure_connector():
@@ -37,7 +37,7 @@ def configure_connector():
                 "table.whitelist": "stations",
                 "mode": "incrementing",
                 "incrementing.column.name": "stop_id",
-                "topic.prefix": "connect_jdbc_",
+                "topic.prefix": f"{CONNECTOR_NAME}.",
                 "poll.interval.ms": "60000"
             }
         })

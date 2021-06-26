@@ -80,7 +80,7 @@ We will leverage Faust Stream Processing to transform the raw Stations table tha
 
 To accomplish this, you must complete the following tasks:
 
-1. [ ] Complete the code and configuration in `consumers/faust_stream.py
+1. [x] Complete the code and configuration in `consumers/faust_stream.py
 
 #### Watch Out!
 
@@ -93,7 +93,7 @@ Next, we will use KSQL to aggregate turnstile data for each of our stations. Rec
 
 To accomplish this, you must complete the following tasks:
 
-1. Complete the queries in `consumers/ksql.py`
+1. [x] Complete the queries in `consumers/ksql.py`
 
 #### Tips
 
@@ -107,10 +107,10 @@ With all of the data in Kafka, our final task is to consume the data in the web 
 
 To accomplish this, you must complete the following tasks:
 
-1. Complete the code in `consumers/consumer.py`
-1. Complete the code in `consumers/models/line.py`
-1. Complete the code in `consumers/models/weather.py`
-1. Complete the code in `consumers/models/station.py`
+1. [x] Complete the code in `consumers/consumer.py`
+1. [x] Complete the code in `consumers/models/line.py`
+1. [x] Complete the code in `consumers/models/weather.py`
+1. [x] Complete the code in `consumers/models/station.py`
 
 ### Documentation
 In addition to the course content you have already reviewed, you may find the following examples and documentation helpful in completing this assignment:
