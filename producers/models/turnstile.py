@@ -41,7 +41,6 @@ class Turnstile(Producer):
     def run(self, timestamp, time_step):
         """Simulates riders entering through the turnstile."""
         num_entries = self.turnstile_hardware.get_entries(timestamp, time_step)
-        logger.info("turnstile")
         for _ in range(num_entries):
             if self.station.a_train is not None or self.station.b_train is not None:
                 self.producer.produce(
